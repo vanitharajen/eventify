@@ -372,6 +372,7 @@ body {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .event-item {
@@ -461,6 +462,151 @@ body {
     font-size: 15px;
     cursor: pointer;
 }
+
+/* footer */
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    background: #07060b;
+    color: #ffffff;
+    padding: 40px 20px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* Brand */
+.footer-brand {
+    max-width: 300px;
+}
+
+.footer-logo {
+    display: inline-block;
+    font-size: 28px;
+    font-weight: 800;
+    color: #a855f7;
+    text-decoration: none;
+}
+
+.footer-brand p {
+    margin-top: 12px;
+    color: #9ca3af;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Section headings */
+.footer h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Quick links */
+.footer-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 14px;
+}
+
+.footer-nav a {
+    color: #9ca3af;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+    color: #c084fc;
+}
+
+/* Contact */
+.footer-contact p {
+    margin-top: 14px;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+.footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 14px;
+}
+
+.footer-social a {
+    color: #c084fc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #e9d5ff;
+}
+
+/* Copyright */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 12px;
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .footer-brand {
+        max-width: 100%;
+    }
+
+    .footer-nav {
+        gap: 14px;
+    }
+
+    .footer-social {
+        gap: 14px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .footer {
+        padding: 30px 16px 18px;
+    }
+
+    .footer-logo {
+        font-size: 25px;
+    }
+
+    .footer-nav,
+    .footer-social {
+        gap: 12px;
+    }
+}
+
 
 /* responsive */
 /* tablet and medium screens */
