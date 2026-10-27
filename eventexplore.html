@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./eventexplore.css">
+</head>
+
+<body id="eventexplorepage">
+    <!-- header nav bar -->
+    <section class="menulist">
+        <div>
+            <h1 class="logo">Eventra</h1>
+        </div>
+        <div>
+            <nav class="navbar">
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="eventexplore.html" class="nav-link">Explore Events</a></li>
+                    <li><a href="eventfydetails.html" class="nav-link">Event Details</a></li>
+                    <li><a href="booking.html" class="nav-link">My Booking</a></li>
+                    <li><a href="#" class="nav-link">Admin Dashboard</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+    <!-- side nav bar -->
+    
+        <button class="menu-btn" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars" style="color:blueviolet"></i>
+        </button>
+        <nav class="sidenavbar" id="sidenavbar">
+            <button class="close-btn" onclick="toggleMenu()">
+                &times;
+            </button>
+
+            <ul class="sidenav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="eventexplore.html">Explore Events</a></li>
+            <li><a href="eventfydetails.html">Event Details</a></li>
+            <li><a href="booking.html">My Booking</a></li>
+            <li><a href="admin.html">Admin Dashboard</a></li>
+            </ul>
+        </nav>
+    
+    <section class="container">
+        <img src="./images/background.png" alt="singer performing on a concert" class="backgroundimg">
+        <div class="content">
+            <p class="content_p1">Discover <i class="fa-solid fa-circle"
+                    style="color: rgb(250, 251, 252);font-size: 2px;vertical-align: middle;"></i> Connect <i
+                    class="fa-solid fa-circle"
+                    style="color: rgb(250, 251, 252);font-size: 2px;vertical-align: middle;"></i> Experience</p>
+            <h1>Find your next<br>
+                <span>unforgettable</span> experience.
+            </h1>
+            <p class="content_p2">
+                Concerts, workshops, tech fests, comedy shows and more.
+            </p>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchinput" placeholder="Search events, artists or venues...">
+                <button type="button" id="searchBtn">Search</button>
+            </div>
+        </div>
+    </section>
+    <!-- Event categories -->
+    <section class="container2">
+        <button class="category-btn"><i class="fa-solid fa-ticket"></i>All Events</button>
+        <button class="category-btn"><i class="fa-solid fa-music"></i>Music</button>
+        <button class="category-btn"><i class="fa-solid fa-laptop"></i>Technology</button>
+        <button class="category-btn"><i class="fa-solid fa-users"></i>workshops</button>
+        <button class="category-btn"><i class="fa-solid fa-masks-theater"></i>Comedy</button>
+        <button class="category-btn"><i class="fa-solid fa-trophy"></i>Sports</button>
+        <button class="category-btn"><i class="fa-solid fa-palette"></i>Arts & Culture</button>
+        <button class="category-btn"><i class="fa-solid fa-utensils"></i>Food & Drinks</button>
+    </section>
+    <!-- upcoming events -->
+    <section class="container3">
+        <div class="select_heading">
+            <h2>upcoming Events</h2>
+        </div>
+        <div class="sort-box">
+            <label for="sortSelect">Sort by</label>
+
+            <select id="sortSelect">
+                <option value="recommended">Recommended</option>
+                <option value="price">Price: Low to High</option>
+                <option value="date">Date: Earliest First</option>
+            </select>
+        </div>
+    </section>
+    <!-- Event cards -->
+    <section class="event-card">
+        <div class="event-item">
+            <div class="event-image">
+                <img src="./images/live music.png" alt="Live Music">
+                <span class="event-category">Music</span>
+            </div>
+            <div class="event-info">
+                <h3>Live Music Night</h3>
+                <p class="event-date" data-date="2026-11-24"><i class="fa-regular fa-calendar"
+                        style="color: rgb(255, 212, 59);"></i>
+                    24 Nov 2026 | 6:00 PM</p>
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Chennai</p>
+                <div class="price-row">
+                    <span>₹ 499</span>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <button class="details-btn">View Details</button>
+            </div>
+        </div>
+        <div class="event-item">
+            <div class="event-image">
+                <img src="./images/Tech Hackathon.png" alt="Tech Hackathon">
+                <span class="event-category" style="background-color: rgb(13, 180, 246);">Technology</span>
+            </div>
+            <div class="event-info">
+                <h3>Tech Hackathon 2026</h3>
+                <p class="event-date" data-date="2026-11-28"><i class="fa-regular fa-calendar"
+                        style="color: rgb(255, 212, 59);"></i>
+                    28 Nov 2026 | 9:00 AM</p>
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Coimbatore</p>
+                <div class="price-row">
+                    <span style="color: palegreen;">Free</span>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <button class="details-btn">View Details</button>
+            </div>
+        </div>
+        <div class="event-item">
+            <div class="event-image">
+                <img src="./images/art.png" alt="Art & Culture">
+                <span class="event-category" style="background-color: orange;">Arts & Culture</span>
+            </div>
+            <div class="event-info">
+                <h3>Creative Art Workshop</h3>
+                <p class="event-date" data-date="2026-12-05"><i class="fa-regular fa-calendar"
+                        style="color: rgb(255, 212, 59);"></i>
+                    05 Dec 2026 | 10:00 AM</p>
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Chennai</p>
+                <div class="price-row">
+                    <span>₹ 299</span>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <button class="details-btn">View Details</button>
+            </div>
+        </div>
+        <div class="event-item">
+            <div class="event-image">
+                <img src="./images/comedy.png" alt="Stand Up Comedy">
+                <span class="event-category" style="background-color: orangered;">Comedy</span>
+            </div>
+            <div class="event-info">
+                <h3>Stand-up Comedy Night</h3>
+                <p class="event-date" data-date="2026-12-10"><i class="fa-regular fa-calendar"
+                        style="color: rgb(255, 212, 59);"></i>
+                    10 Dec 2026 | 7:00 PM</p>
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Coimbatore</p>
+                <div class="price-row">
+                    <span>₹ 399</span>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <button class="details-btn">View Details</button>
+            </div>
+        </div>
+        <div class="event-item">
+            <div class="event-image">
+                <img src="./images/sports.png" alt="Sports">
+                <span class="event-category" style="background-color:lightseagreen;">Sports</span>
+            </div>
+            <div class="event-info">
+                <h3>Marathon Sports</h3>
+                <p class="event-date" data-date="2026-11-15"><i class="fa-regular fa-calendar"
+                        style="color: rgb(255, 212, 59);"></i>
+                    15 Nov 2026 | 5:30 AM</p>
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Chennai</p>
+                <div class="price-row">
+                    <span>₹ 199</span>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <button class="details-btn">View Details</button>
+            </div>
+        </div>
+        <div class="event-item">
+            <div class="event-image">
+                <img src="./images/festival.png" alt="Live Music">
+                <span class="event-category">Music</span>
+            </div>
+            <div class="event-info">
+                <h3>Indie Music Festival</h3>
+                <p class="event-date" data-date="2026-12-20"><i class="fa-regular fa-calendar"
+                        style="color: rgb(255, 212, 59);"></i>
+                    20 Dec 2026 | 4:00 PM</p>
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Pondicherry</p>
+                <div class="price-row">
+                    <span>₹ 799</span>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <button class="details-btn">View Details</button>
+            </div>
+        </div>
+        <div class="event-item">
+            <div class="event-image">
+                <img src="./images/technology.png" alt="Technology">
+                <span class="event-category" style="background-color:rgb(13, 180, 246);">Technology</span>
+            </div>
+            <div class="event-info">
+                <h3>Technology</h3>
+                <p class="event-date" data-date="2026-12-22"><i class="fa-regular fa-calendar"
+                        style="color: rgb(255, 212, 59);"></i>
+                    22 Dec 2026 | 9:00 AM</p>
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Chennai</p>
+                <div class="price-row">
+                    <span>₹ 599</span>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <button class="details-btn">View Details</button>
+            </div>
+        </div>
+        <div class="event-item">
+            <div class="event-image">
+                <img src="./images/food carnival.png" alt="Food Festival">
+                <span class="event-category" style="background-color: purple;">Food & Drinks</span>
+            </div>
+            <div class="event-info">
+                <h3>Food Carnival</h3>
+                <p class="event-date" data-date="2026-12-25"><i class="fa-regular fa-calendar"
+                        style="color: rgb(255, 212, 59);"></i>
+                    25 Dec 2026 | 11:00 AM</p>
+                <p><i class="fa-solid fa-location-dot"></i>
+                    Coimbatore</p>
+                <div class="price-row">
+                    <span>₹ 150</span>
+                    <i class="fa-regular fa-heart"></i>
+                </div>
+                <button class="details-btn">View Details</button>
+            </div>
+        </div>
+    </section>
+    <p id="noEventsMessage" style="display: none; color: white; text-align: center;font-size: 20px;">
+        No events found. Please try another search.
+    </p>
+    <!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+            <a href="index.html" class="footer-logo">Eventra</a>
+            <p>
+                Discover your next favourite experience
+                with Eventra.
+            </p>
+        </div>
+
+        <!-- Quick Links -->
+        
+<!-- Quick Links -->
+<div class="footer-links">
+    <h3>Quick Links</h3>
+
+    <div class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="#eventexplorepage">Explore Events</a>
+        <a href="eventdetails.html">Event Details</a>
+        <a href="mybooking.html">My Booking</a>
+        <a href="admindashboard.html">Admin Dashboard</a>
+    </div>
+</div>
+
+
+        <!-- Contact -->
+        <div class="footer-contact">
+            <h3>Contact</h3>
+            <p>contact@eventra.com</p>
+
+            <div class="footer-social">
+                <a href="https://instagram.com"
+                   target="_blank" rel="noopener noreferrer">
+                    Instagram
+                </a>
+
+                <a href="https://facebook.com"
+                   target="_blank" rel="noopener noreferrer">
+                    Facebook
+                </a>
+
+                <a href="https://youtube.com"
+                   target="_blank" rel="noopener noreferrer">
+                    YouTube
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="footer-bottom">
+        <p>&copy; 2026 Eventra. All rights reserved.</p>
+    </div>
+</footer>
+    <!--Javascript-->
+    <script src="./eventexplore.js"></script>
+</body>
+</html>

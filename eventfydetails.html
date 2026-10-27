@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventify</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #080d1b;
+            color: #f8fafc;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-button {
+            background: linear-gradient(90deg, #635bfa, #9333ea);
+            transition: 0.3s;
+        }
+
+        .gradient-button:hover {
+            box-shadow: 0 0 25px rgba(124, 58, 237, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .event-card {
+            background: #111a2e;
+            border: 1px solid #27334d;
+            border-radius: 18px;
+            transition: 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            border-color: #7167ff;
+            box-shadow: 0 12px 30px rgba(99, 91, 250, 0.15);
+        }
+
+        input {
+            background: #080d1b;
+            color: white;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 12px;
+            width: 100%;
+            margin-top: 7px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #818cf8;
+        }
+
+        @media (max-width: 600px) {
+            .navbar-links {
+                gap: 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 border-b border-slate-800 bg-[#080d1b]/95">
+        <div class="max-w-7xl mx-auto px-5 py-5 flex justify-between items-center">
+
+            <a href="#home" class="text-2xl font-extrabold gradient-text">
+                Eventify.
+            </a>
+
+            <div class="navbar-links flex gap-6 text-slate-300">
+                <a href="index.html" class="hover:text-violet-400">Home</a>
+                <a href="#about" class="hover:text-violet-400">About</a>
+                <a href="#highlights" class="hover:text-violet-400">Highlights</a>
+                <a href="#tickets" class="hover:text-violet-400">Tickets</a>
+            </div>
+
+        </div>
+    </nav>
+
+<!-- Concert Hero Image -->
+<div class="relative w-full overflow-hidden rounded-2xl">
+    <img
+        src="./images/concert-hero.png"
+        alt="Live Music Concert"
+        class="w-full h-[350px] md:h-[550px] object-cover"
+    >
+
+    <!-- Dark Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#080d1b] via-transparent to-transparent"></div>
+
+    <!-- Event Text -->
+    <div class="absolute bottom-0 left-0 p-6 md:p-10">
+        <span class="inline-block rounded-full bg-purple-600/80 px-4 py-2 text-sm text-white mb-4">
+            🎵 LIVE MUSIC EVENT
+        </span>
+
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-3">
+            Rhythm Night 2026
+        </h1>
+
+        <p class="text-gray-200 text-base md:text-lg">
+            📍 Chennai &nbsp; | &nbsp; 📅 November 15, 2026
+        </p>
+
+        <p class="text-gray-300 mt-2">
+            Experience the music. Feel the energy. Live the night.
+        </p>
+    </div>
+</div>
+
+   
+    </section>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-7xl mx-auto px-5 py-8">
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <!-- LEFT SIDE -->
+            <div class="lg:col-span-2 space-y-12">
+
+                <!-- ABOUT -->
+                <section id="about">
+
+                    <p class="text-violet-400 text-sm font-bold tracking-widest">
+                        ABOUT THE EVENT
+                    </p>
+
+                    <h2 class="text-3xl md:text-4xl font-bold mt-3">
+                        Music that brings us
+                        <span class="gradient-text">together.</span>
+                    </h2>
+
+                    <p class="text-slate-400 leading-8 mt-5">
+                        Rhythm Night 2026 is a celebration of music,
+                        creativity and unforgettable moments. Join music
+                        lovers for an energetic live concert featuring
+                        talented performers and an exciting atmosphere.
+                    </p>
+
+                    <p class="text-slate-400 leading-8 mt-3">
+                        Bring your friends, enjoy the performances and
+                        create memories that last long after the final song.
+                    </p>
+
+                </section>
+
+                <!-- HIGHLIGHTS -->
+                <section id="highlights">
+
+                    <p class="text-violet-400 text-sm font-bold tracking-widest">
+                        WHAT TO EXPECT
+                    </p>
+
+                    <h2 class="text-3xl font-bold mt-3 mb-6">
+                        Event <span class="gradient-text">Highlights</span>
+                    </h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+                        <div class="event-card p-6">
+                            <div class="text-3xl mb-4">🎤</div>
+                            <h3 class="text-xl font-bold">Live Performances</h3>
+                            <p class="text-slate-400 mt-3 leading-7">
+                                Enjoy energetic music performances and a
+                                memorable live concert experience.
+                            </p>
+                        </div>
+
+                        <div class="event-card p-6">
+                            <div class="text-3xl mb-4">✨</div>
+                            <h3 class="text-xl font-bold">Amazing Light Show</h3>
+                            <p class="text-slate-400 mt-3 leading-7">
+                                Experience vibrant stage lighting and
+                                an immersive concert atmosphere.
+                            </p>
+                        </div>
+
+                        <div class="event-card p-6">
+                            <div class="text-3xl mb-4">👥</div>
+                            <h3 class="text-xl font-bold">Meet Music Lovers</h3>
+                            <p class="text-slate-400 mt-3 leading-7">
+                                Connect with other music lovers and
+                                enjoy the event with your friends.
+                            </p>
+                        </div>
+
+                        <div class="event-card p-6">
+                            <div class="text-3xl mb-4">📸</div>
+                            <h3 class="text-xl font-bold">Create Memories</h3>
+                            <p class="text-slate-400 mt-3 leading-7">
+                                Make your evening special with amazing
+                                performances and unforgettable moments.
+                            </p>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- EVENT INFORMATION -->
+                <section>
+
+                    <p class="text-violet-400 text-sm font-bold tracking-widest">
+                        EVENT INFORMATION
+                    </p>
+
+                    <h2 class="text-3xl font-bold mt-3 mb-6">
+                        Everything you
+                        <span class="gradient-text">need to know.</span>
+                    </h2>
+
+                    <div class="event-card p-6 space-y-6">
+
+                        <div class="flex gap-4">
+                            <span class="text-2xl">📅</span>
+                            <div>
+                                <h3 class="font-bold">Date & Time</h3>
+                                <p class="text-slate-400 mt-2">
+                                    November 15, 2026 · 6:00 PM onwards
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-800"></div>
+
+                        <div class="flex gap-4">
+                            <span class="text-2xl">📍</span>
+                            <div>
+                                <h3 class="font-bold">Location</h3>
+                                <p class="text-slate-400 mt-2">
+                                    Chennai, Tamil Nadu, India
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-800"></div>
+
+                        <div class="flex gap-4">
+                            <span class="text-2xl">🎟️</span>
+                            <div>
+                                <h3 class="font-bold">Ticket Price</h3>
+                                <p class="text-slate-400 mt-2">
+                                    ₹499 per ticket
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- TICKET BOOKING -->
+            <aside id="tickets">
+
+                <div class="event-card p-6 lg:sticky lg:top-24">
+
+                    <p class="text-violet-300 text-sm font-bold">
+                        YOUR EXPERIENCE STARTS HERE
+                    </p>
+
+                    <h2 class="text-2xl font-bold mt-3">
+                        Get Your <span class="gradient-text">Tickets</span>
+                    </h2>
+
+                    <p class="text-slate-400 mt-3 text-sm">
+                        Select your ticket quantity to see the total.
+                    </p>
+
+                    <div class="border-t border-slate-700 my-6"></div>
+
+                    <div class="flex justify-between items-center">
+
+                        <div>
+                            <h3 class="font-bold">General Admission</h3>
+                            <p class="text-slate-400 text-sm mt-2">
+                                Standard entry ticket
+                            </p>
+                        </div>
+
+                        <p class="text-xl font-bold gradient-text">₹499</p>
+
+                    </div>
+
+                    <div class="mt-7">
+
+                        <label class="text-sm text-slate-300">
+                            Number of tickets
+                        </label>
+
+                        <div class="flex justify-between items-center mt-3 border border-slate-700 rounded-xl p-2">
+
+                            <button type="button" id="decreaseBtn"
+                                class="w-10 h-10 rounded-lg bg-slate-800 hover:bg-violet-700 text-xl">
+                                −
+                            </button>
+
+                            <span id="quantity" class="text-xl font-bold">1</span>
+
+                            <button type="button" id="increaseBtn"
+                                class="w-10 h-10 rounded-lg bg-slate-800 hover:bg-violet-700 text-xl">
+                                +
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="bg-[#080d1b] rounded-xl p-4 mt-6">
+
+                        <div class="flex justify-between text-sm text-slate-400">
+                            <span>Price per ticket</span>
+                            <span>₹499</span>
+                        </div>
+
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="font-bold">Total amount</span>
+                            <span id="totalPrice" class="text-2xl font-extrabold gradient-text">
+                                ₹499
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <button type="button" id="bookBtn"
+                        class="gradient-button w-full rounded-xl py-4 font-bold mt-6">
+                        Continue to Booking →
+                    </button>
+
+                    <p class="text-xs text-slate-500 text-center mt-4">
+                        Demo booking · No payment processed
+                    </p>
+
+                </div>
+            </aside>
+
+        </div>
+
+        <!-- BOOKING FORM -->
+        <section id="bookingForm" class="hidden max-w-2xl mx-auto mt-12">
+
+            <div class="event-card p-6 md:p-8">
+
+                <p class="text-violet-400 text-sm font-bold tracking-widest">
+                    ALMOST THERE
+                </p>
+
+                <h2 class="text-3xl font-bold mt-3">
+                    Complete Your <span class="gradient-text">Booking</span>
+                </h2>
+
+                <p class="text-slate-400 mt-3">
+                    Enter your details to generate a demo booking confirmation.
+                </p>
+
+                <form id="bookingDetailsForm" class="mt-7 space-y-5">
+
+                    <div>
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName"
+                            placeholder="Enter your full name" required>
+                    </div>
+
+                    <div>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email"
+                            placeholder="Enter your email" required>
+                    </div>
+
+                    <div>
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone"
+                            placeholder="10-digit mobile number"
+                            pattern="[0-9]{10}" maxlength="10" required>
+                    </div>
+
+                    <div class="bg-[#080d1b] border border-slate-800 rounded-xl p-4">
+
+                        <div class="flex justify-between">
+                            <span class="text-slate-300">Tickets selected</span>
+                            <span id="bookingQuantity">1</span>
+                        </div>
+
+                        <div class="flex justify-between mt-3">
+                            <span class="text-slate-300">Total amount</span>
+                            <span id="bookingTotal" class="gradient-text font-bold">₹499</span>
+                        </div>
+
+                    </div>
+
+                    <button type="submit"
+                        class="gradient-button w-full rounded-xl py-4 font-bold">
+                        Confirm Demo Booking
+                    </button>
+
+                </form>
+
+                <div id="bookingMessage"
+                    class="hidden mt-6 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-5"
+                    aria-live="polite">
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-slate-800 bg-[#060a14] mt-8">
+
+        <div class="max-w-7xl mx-auto px-5 py-10">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <div>
+                    <a href="#home" class="text-2xl font-extrabold gradient-text">
+                        Eventify.
+                    </a>
+
+                    <p class="text-slate-400 mt-4 leading-7">
+                        Discover experiences, celebrate moments and
+                        make every event unforgettable.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold">Quick Links</h3>
+
+                    <div class="flex flex-col gap-3 mt-4 text-slate-400">
+                        <a href="#home">Home</a>
+                        <a href="#about">About Event</a>
+                        <a href="#highlights">Highlights</a>
+                        <a href="#tickets">Book Tickets</a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-bold">Event Details</h3>
+
+                    <p class="text-slate-400 mt-4 leading-7">
+                        📍 Chennai, Tamil Nadu<br>
+                        📅 November 15, 2026<br>
+                        🕕 6:00 PM onwards
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="border-t border-slate-800 mt-8 pt-6 text-center">
+                <p class="text-sm text-slate-500">
+                    © 2026 Eventify. Frontend group project.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="./eventfydetails.js"></script>
+
+</body>
+</html>

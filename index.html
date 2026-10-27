@@ -2,316 +2,554 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event Booking</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="./eventexplore.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventra | Discover Events</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <!-- Custom CSS -->
+  <style>
+    * {
+      font-family: Poppins, sans-serif;
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: #09070f;
+      color: #fff
+    }
+
+    .purple {
+      color: #b98cff
+    }
+
+    .btn {
+      background: linear-gradient(100deg, #7c3aed, #c026d3);
+      transition: .3s
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px #9333ea66
+    }
+
+    .event-card,
+    .venue-card,
+    .review-card,
+    .category-card {
+      transition: transform .3s, box-shadow .3s
+    }
+
+    .event-card:hover,
+    .venue-card:hover,
+    .review-card:hover,
+    .category-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 12px 30px #9333ea2c
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s, transform .65s
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .glass {
+      background: #171020d9;
+      border: 1px solid #ffffff18;
+      backdrop-filter: blur(10px)
+    }
+
+    .gallery-img {
+      cursor: pointer;
+      transition: transform .3s, opacity .3s
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.035);
+      opacity: .85
+    }
+
+    input,
+    select {
+      color: #fff
+    }
+
+    option {
+      background: #171020
+    }
+  </style>
 </head>
 
 <body>
-    <!-- header nav bar -->
-    <section class="menulist">
-        <div>
-            <h1 class="logo">Eventra</h1>
-        </div>
-        <div>
-            <nav class="navbar">
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="eventexplore.html" class="nav-link">Explore Events</a></li>
-                    <li><a href="eventfydetails.html" class="nav-link">Event Details</a></li>
-                    <li><a href="#" class="nav-link">My Booking</a></li>
-                    <li><a href="#" class="nav-link">Admin Dashboard</a></li>
-                </ul>
-            </nav>
-        </div>
-    </section>
-    <!-- side nav bar -->
-    
-        <button class="menu-btn" onclick="toggleMenu()">
-            <i class="fa-solid fa-bars" style="color:blueviolet"></i>
-        </button>
-        <nav class="sidenavbar" id="sidenavbar">
-            <button class="close-btn" onclick="toggleMenu()">
-                &times;
-            </button>
+  <!-- Header and Navigation -->
+  <header class="fixed top-0 z-50 w-full border-b border-white/10 bg-[#09070f]/90 backdrop-blur-lg">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
+      <a href="#home" class="text-2xl font-extrabold tracking-wide">Eventra</a>
 
-            <ul class="sidenav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="eventexplore.html">Explore Events</a></li>
-            <li><a href="#">Event Details</a></li>
-            <li><a href="#">My Booking</a></li>
-            <li><a href="#">Admin Dashboard</a></li>
-            </ul>
-        </nav>
-    
-    <section class="container">
-        <img src="./images/background.png" alt="singer performing on a concert" class="backgroundimg">
-        <div class="content">
-            <p class="content_p1">Discover <i class="fa-solid fa-circle"
-                    style="color: rgb(250, 251, 252);font-size: 2px;vertical-align: middle;"></i> Connect <i
-                    class="fa-solid fa-circle"
-                    style="color: rgb(250, 251, 252);font-size: 2px;vertical-align: middle;"></i> Experience</p>
-            <h1>Find your next<br>
-                <span>unforgettable</span> experience.
-            </h1>
-            <p class="content_p2">
-                Concerts, workshops, tech fests, comedy shows and more.
-            </p>
-            <div class="search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="searchinput" placeholder="Search events, artists or venues...">
-                <button type="button" id="searchBtn">Search</button>
-            </div>
-        </div>
-    </section>
-    <!-- Event categories -->
-    <section class="container2">
-        <button class="category-btn"><i class="fa-solid fa-ticket"></i>All Events</button>
-        <button class="category-btn"><i class="fa-solid fa-music"></i>Music</button>
-        <button class="category-btn"><i class="fa-solid fa-laptop"></i>Technology</button>
-        <button class="category-btn"><i class="fa-solid fa-users"></i>workshops</button>
-        <button class="category-btn"><i class="fa-solid fa-masks-theater"></i>Comedy</button>
-        <button class="category-btn"><i class="fa-solid fa-trophy"></i>Sports</button>
-        <button class="category-btn"><i class="fa-solid fa-palette"></i>Arts & Culture</button>
-        <button class="category-btn"><i class="fa-solid fa-utensils"></i>Food & Drinks</button>
-    </section>
-    <!-- upcoming events -->
-    <section class="container3">
-        <div class="select_heading">
-            <h2>upcoming Events</h2>
-        </div>
-        <div class="sort-box">
-            <label for="sortSelect">Sort by</label>
+      <!-- Desktop Navigation -->
+      <div class="hidden items-center gap-6 md:flex">
+        <a href="#home" class="hover:text-purple-300">Home</a>
+        <a href="#explore" class="hover:text-purple-300">Explore Events</a>
+        <a href="#categories" class="hover:text-purple-300">Categories</a>
+        <a href="#featured" class="hover:text-purple-300">Featured Events</a>
+        <a href="#venues" class="hover:text-purple-300">Venues</a>
+        <a href="#gallery" class="hover:text-purple-300">Gallery</a>
+      </div>
 
-            <select id="sortSelect">
-                <option value="recommended">Recommended</option>
-                <option value="price">Price: Low to High</option>
-                <option value="date">Date: Earliest First</option>
-            </select>
-        </div>
-    </section>
-    <!-- Event cards -->
-    <section class="event-card">
-        <div class="event-item">
-            <div class="event-image">
-                <img src="./images/live music.png" alt="Live Music">
-                <span class="event-category">Music</span>
-            </div>
-            <div class="event-info">
-                <h3>Live Music Night</h3>
-                <p class="event-date" data-date="2026-11-24"><i class="fa-regular fa-calendar"
-                        style="color: rgb(255, 212, 59);"></i>
-                    24 Nov 2026 | 6:00 PM</p>
-                <p><i class="fa-solid fa-location-dot"></i>
-                    Chennai</p>
-                <div class="price-row">
-                    <span>₹ 499</span>
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <button class="details-btn">View Details</button>
-            </div>
-        </div>
-        <div class="event-item">
-            <div class="event-image">
-                <img src="./images/Tech Hackathon.png" alt="Tech Hackathon">
-                <span class="event-category" style="background-color: rgb(13, 180, 246);">Technology</span>
-            </div>
-            <div class="event-info">
-                <h3>Tech Hackathon 2026</h3>
-                <p class="event-date" data-date="2026-11-28"><i class="fa-regular fa-calendar"
-                        style="color: rgb(255, 212, 59);"></i>
-                    28 Nov 2026 | 9:00 AM</p>
-                <p><i class="fa-solid fa-location-dot"></i>
-                    Coimbatore</p>
-                <div class="price-row">
-                    <span style="color: palegreen;">Free</span>
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <button class="details-btn">View Details</button>
-            </div>
-        </div>
-        <div class="event-item">
-            <div class="event-image">
-                <img src="./images/art.png" alt="Art & Culture">
-                <span class="event-category" style="background-color: orange;">Arts & Culture</span>
-            </div>
-            <div class="event-info">
-                <h3>Creative Art Workshop</h3>
-                <p class="event-date" data-date="2026-12-05"><i class="fa-regular fa-calendar"
-                        style="color: rgb(255, 212, 59);"></i>
-                    05 Dec 2026 | 10:00 AM</p>
-                <p><i class="fa-solid fa-location-dot"></i>
-                    Chennai</p>
-                <div class="price-row">
-                    <span>₹ 299</span>
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <button class="details-btn">View Details</button>
-            </div>
-        </div>
-        <div class="event-item">
-            <div class="event-image">
-                <img src="./images/comedy.png" alt="Stand Up Comedy">
-                <span class="event-category" style="background-color: orangered;">Comedy</span>
-            </div>
-            <div class="event-info">
-                <h3>Stand-up Comedy Night</h3>
-                <p class="event-date" data-date="2026-12-10"><i class="fa-regular fa-calendar"
-                        style="color: rgb(255, 212, 59);"></i>
-                    10 Dec 2026 | 7:00 PM</p>
-                <p><i class="fa-solid fa-location-dot"></i>
-                    Coimbatore</p>
-                <div class="price-row">
-                    <span>₹ 399</span>
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <button class="details-btn">View Details</button>
-            </div>
-        </div>
-        <div class="event-item">
-            <div class="event-image">
-                <img src="./images/sports.png" alt="Sports">
-                <span class="event-category" style="background-color:lightseagreen;">Sports</span>
-            </div>
-            <div class="event-info">
-                <h3>Marathon Sports</h3>
-                <p class="event-date" data-date="2026-11-15"><i class="fa-regular fa-calendar"
-                        style="color: rgb(255, 212, 59);"></i>
-                    15 Nov 2026 | 5:30 AM</p>
-                <p><i class="fa-solid fa-location-dot"></i>
-                    Chennai</p>
-                <div class="price-row">
-                    <span>₹ 199</span>
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <button class="details-btn">View Details</button>
-            </div>
-        </div>
-        <div class="event-item">
-            <div class="event-image">
-                <img src="./images/festival.png" alt="Live Music">
-                <span class="event-category">Music</span>
-            </div>
-            <div class="event-info">
-                <h3>Indie Music Festival</h3>
-                <p class="event-date" data-date="2026-12-20"><i class="fa-regular fa-calendar"
-                        style="color: rgb(255, 212, 59);"></i>
-                    20 Dec 2026 | 4:00 PM</p>
-                <p><i class="fa-solid fa-location-dot"></i>
-                    Pondicherry</p>
-                <div class="price-row">
-                    <span>₹ 799</span>
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <button class="details-btn">View Details</button>
-            </div>
-        </div>
-        <div class="event-item">
-            <div class="event-image">
-                <img src="./images/technology.png" alt="Technology">
-                <span class="event-category" style="background-color:rgb(13, 180, 246);">Technology</span>
-            </div>
-            <div class="event-info">
-                <h3>Technology</h3>
-                <p class="event-date" data-date="2026-12-22"><i class="fa-regular fa-calendar"
-                        style="color: rgb(255, 212, 59);"></i>
-                    22 Dec 2026 | 9:00 AM</p>
-                <p><i class="fa-solid fa-location-dot"></i>
-                    Chennai</p>
-                <div class="price-row">
-                    <span>₹ 599</span>
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <button class="details-btn">View Details</button>
-            </div>
-        </div>
-        <div class="event-item">
-            <div class="event-image">
-                <img src="./images/food carnival.png" alt="Food Festival">
-                <span class="event-category" style="background-color: purple;">Food & Drinks</span>
-            </div>
-            <div class="event-info">
-                <h3>Food Carnival</h3>
-                <p class="event-date" data-date="2026-12-25"><i class="fa-regular fa-calendar"
-                        style="color: rgb(255, 212, 59);"></i>
-                    25 Dec 2026 | 11:00 AM</p>
-                <p><i class="fa-solid fa-location-dot"></i>
-                    Coimbatore</p>
-                <div class="price-row">
-                    <span>₹ 150</span>
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <button class="details-btn">View Details</button>
-            </div>
-        </div>
-    </section>
-    <p id="noEventsMessage" style="display: none; color: white; text-align: center;font-size: 20px;">
-        No events found. Please try another search.
-    </p>
-    <!-- Footer -->
-<footer class="footer">
-    <div class="footer-container">
+      <button id="menuBtn" class="hidden text-2xl md:block" aria-label="Open extra menu">☰</button>
+      <button id="mobileMenuBtn" class="text-2xl md:hidden" aria-label="Open mobile menu">☰</button>
+    </nav>
 
-        <!-- Brand -->
-        <div class="footer-brand">
-            <a href="index.html" class="footer-logo">Eventra</a>
-            <p>
-                Discover your next favourite experience
-                with Eventra.
-            </p>
+    <!-- Desktop Extra Menu -->
+    <div id="menu"
+      class="hidden fixed right-0 top-0 z-50 h-screen w-72 flex-col gap-6 bg-[#100b19] p-8 pt-20 shadow-2xl">
+      <button id="closeMenu" class="absolute right-5 top-4 text-3xl text-white">×</button>
+      <a href="#home" class="menuLink">Home</a>
+      <a href="eventexplore.html" class="menuLink">Explore Events</a>
+      <a href="eventfydetails.html" class="menuLink">Event Details &amp; Booking</a>
+      <a href="booking.html" class="menuLink">My Booking</a>
+      <a href="admin.html" class="menuLink">Admin Dashboard</a>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div id="mobileMenu"
+      class="hidden fixed right-0 top-0 z-50 h-screen w-72 flex-col items-start gap-6 overflow-y-auto bg-[#100b19] p-8 pt-20 shadow-2xl">
+      <button id="closeMobileMenu" class="absolute right-6 top-5 text-3xl text-white">×</button>
+      <a href="#home" class="mobileLink">Home</a>
+      <a href="eventexplore.html" class="mobileLink">Explore Events</a>
+      <a href="eventydetails.html" class="mobileLink">Event Details &amp; Booking</a>
+      <a href="booking.html" class="mobileLink">My Booking</a>
+      <a href="#categories" class="mobileLink">Categories</a>
+      <a href="#featured" class="mobileLink">Featured Events</a>
+      <a href="#venues" class="mobileLink">Venues</a>
+      <a href="#gallery" class="mobileLink">Gallery</a>
+      <a href="admin.html" class="mobileLink">Admin Dashboard</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="home" class="relative flex min-h-[92vh] items-center overflow-hidden px-5 pt-24">
+      <video autoplay muted loop playsinline class="absolute inset-0 h-full w-full object-cover">
+        <source src="vdo/hero3.mp4" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-black/65"></div>
+
+      <div class="relative z-10 mx-auto w-full max-w-7xl">
+        <p class="mb-4 font-semibold uppercase tracking-widest text-purple-300">Feel the Moment. Live the Event.</p>
+        <h1 class="max-w-3xl text-4xl font-extrabold sm:text-6xl md:text-7xl">
+          Discover Events.
+          <span class="block text-purple-400">Create Memories.</span>
+        </h1>
+        <p class="mt-5 max-w-xl text-gray-200">Find concerts, parties, workshops and unforgettable experiences.</p>
+        <a href="#explore"
+          class="mt-8 inline-block rounded-full bg-purple-600 px-8 py-3 font-semibold transition duration-300 hover:scale-105 hover:bg-purple-500">Explore
+          Events</a>
+
+        <!-- Event Statistics -->
+        <div class="mt-10 flex flex-wrap gap-8 sm:gap-12">
+          <div>
+            <h3 class="text-3xl font-bold text-purple-400">200+</h3>
+            <p class="mt-1 text-sm text-gray-300">Events Listed</p>
+          </div>
+          <div>
+            <h3 class="text-3xl font-bold text-purple-400">50+</h3>
+            <p class="mt-1 text-sm text-gray-300">Popular Venues</p>
+          </div>
+          <div>
+            <h3 class="text-3xl font-bold text-purple-400">10+</h3>
+            <p class="mt-1 text-sm text-gray-300">Event Categories</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section id="categories" class="mx-auto max-w-7xl px-5 py-16">
+      <div class="reveal mb-8">
+        <p class="purple text-sm font-semibold uppercase tracking-widest">Find your vibe</p>
+        <h2 class="mt-2 text-3xl font-bold sm:text-4xl">Browse Categories</h2>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        <button class="category-card reveal rounded-2xl border border-white/10 bg-[#171020] p-5 text-left"
+          data-category="music"><span class="text-3xl"><i class="fa-solid fa-music"></i></span><b
+            class="mt-3 block">Music</b><small class="text-gray-400">Live concerts</small></button>
+        <button class="category-card reveal rounded-2xl border border-white/10 bg-[#171020] p-5 text-left"
+          data-category="wedding"><span class="text-3xl"><i class="fa-solid fa-champagne-glasses"></i></span><b
+            class="mt-3 block">Wedding</b><small class="text-gray-400">Special days</small></button>
+        <button class="category-card reveal rounded-2xl border border-white/10 bg-[#171020] p-5 text-left"
+          data-category="party"><span class="text-3xl"><i class="fa-solid fa-gift"></i></span><b
+            class="mt-3 block">Party</b><small class="text-gray-400">Night vibes</small></button>
+        <button class="category-card reveal rounded-2xl border border-white/10 bg-[#171020] p-5 text-left"
+          data-category="sports"><span class="text-3xl"><i class="fa-solid fa-futbol"></i></span><b
+            class="mt-3 block">Sports</b><small class="text-gray-400">Game on</small></button>
+        <button class="category-card reveal rounded-2xl border border-white/10 bg-[#171020] p-5 text-left"
+          data-category="tech"><span class="text-3xl"><i class="fa-solid fa-laptop"></i></span><b
+            class="mt-3 block">Tech</b><small class="text-gray-400">Ideas & innovation</small></button>
+        <button class="category-card reveal rounded-2xl border border-white/10 bg-[#171020] p-5 text-left"
+          data-category="art"><span class="text-3xl"><i class="fa-solid fa-paintbrush"></i></span><b
+            class="mt-3 block">Art</b><small class="text-gray-400">Creative spaces</small></button>
+      </div>
+    </section>
+
+    <!-- Featured Events Section -->
+    <section id="featured" class="bg-[#100b19] px-5 py-16">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mb-8 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="purple text-sm font-semibold uppercase tracking-widest">Handpicked for you</p>
+            <h2 class="mt-2 text-3xl font-bold sm:text-4xl">Featured Events</h2>
+          </div>
+          <a href="#" class="purple hover:text-white">See all events →</a>
         </div>
 
-        <!-- Quick Links -->
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="event-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"
+            data-title="neon music festival" data-category="music">
+            <img class="h-56 w-full object-cover" src="images/ima.jpg" alt="Live music concert">
+            <div class="p-5">
+              <div class="flex justify-between gap-3"><span class="purple text-sm">MUSIC</span><span
+                  class="text-sm text-gray-400">NOV 15, 2026</span></div>
+              <h3 class="mt-2 text-xl font-bold">Neon Music Festival</h3>
+              <p class="mt-2 text-sm text-gray-400"> Greenfield Arena, Kochi</p>
+              <div class="mt-5 flex items-center justify-between"><b>₹799 <small class="font-normal text-gray-400">/
+                    person</small></b><button class="btn details-btn rounded-full px-4 py-2 text-sm"
+                  data-name="Neon Music Festival" data-price="799">View Details</button></div>
+            </div>
+          </article>
+
+          <article class="event-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"
+            data-title="midnight rooftop party" data-category="party">
+            <img class="h-56 w-full object-cover" src="./images/roof.jpg" alt="Crowd at a party">
+            <div class="p-5">
+              <div class="flex justify-between gap-3"><span class="purple text-sm">PARTY</span><span
+                  class="text-sm text-gray-400">NOV 20, 2026</span></div>
+              <h3 class="mt-2 text-xl font-bold">Midnight Rooftop Party</h3>
+              <p class="mt-2 text-sm text-gray-400"> Sky Lounge, Trivandrum</p>
+              <div class="mt-5 flex items-center justify-between"><b>₹599 <small class="font-normal text-gray-400">/
+                    person</small></b><button class="btn details-btn rounded-full px-4 py-2 text-sm"
+                  data-name="Midnight Rooftop Party" data-price="599">View Details</button></div>
+            </div>
+          </article>
+
+          <article class="event-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"
+            data-title="future tech summit" data-category="tech">
+            <img class="h-56 w-full object-cover" src="./images/future.jpg" alt="Technology conference">
+            <div class="p-5">
+              <div class="flex justify-between gap-3"><span class="purple text-sm">TECH</span><span
+                  class="text-sm text-gray-400">DEC 05, 2026</span></div>
+              <h3 class="mt-2 text-xl font-bold">Future Tech Summit</h3>
+              <p class="mt-2 text-sm text-gray-400">Tech Park, Kochi</p>
+              <div class="mt-5 flex items-center justify-between"><b>₹399 <small class="font-normal text-gray-400">/
+                    person</small></b><button class="btn details-btn rounded-full px-4 py-2 text-sm"
+                  data-name="Future Tech Summit" data-price="399">View Details</button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Event Countdown -->
+    <section id="upcoming" class="mx-auto grid max-w-7xl items-center gap-8 px-5 py-16 md:grid-cols-2">
+      <div class="reveal">
+        <p class="purple text-sm font-semibold uppercase tracking-widest">Save the date</p>
+        <h2 class="mt-2 text-3xl font-bold sm:text-4xl">The next big moment is near.</h2>
+        <p class="mt-4 text-gray-400">Get ready for a night of music, lights and unforgettable memories.</p>
+
+        <div class="mt-7 grid max-w-md grid-cols-4 gap-3 text-center">
+          <div class="glass rounded-xl p-4"><b id="days" class="text-2xl">00</b><small
+              class="block text-gray-400">Days</small></div>
+          <div class="glass rounded-xl p-4"><b id="hours" class="text-2xl">00</b><small
+              class="block text-gray-400">Hours</small></div>
+          <div class="glass rounded-xl p-4"><b id="minutes" class="text-2xl">00</b><small
+              class="block text-gray-400">Mins</small></div>
+          <div class="glass rounded-xl p-4"><b id="seconds" class="text-2xl">00</b><small
+              class="block text-gray-400">Secs</small></div>
+        </div>
+
+        <a href="booking.html" class="btn mt-7 inline-block rounded-full px-6 py-3">Get Tickets</a>
+      </div>
+      <div class="reveal overflow-hidden rounded-3xl border border-purple-400/30"><img
+          class="h-80 w-full object-cover md:h-[420px]" src="./images/near.jpg" alt="Upcoming live concert poster">
+      </div>
+    </section>
+
+    <!-- Search and Explore Events -->
+    <section id="explore" class="bg-[#100b19] px-5 py-16">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mb-7">
+          <p class="purple text-sm font-semibold uppercase tracking-widest">Find your next experience</p>
+          <h2 class="mt-2 text-3xl font-bold sm:text-4xl">Find Events</h2>
+        </div>
+
+        <div
+          class="reveal mb-8 grid gap-3 rounded-2xl border border-white/10 bg-[#171020] p-4 md:grid-cols-[1fr_220px_auto]">
+          <input id="searchInput"
+            class="rounded-xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-purple-400"
+            placeholder="Search event name...">
+          <select id="categoryFilter"
+            class="rounded-xl border border-white/10 bg-black/30 px-4 py-3 outline-none focus:border-purple-400">
+            <option value="all">All categories</option>
+            <option value="music">Music</option>
+            <option value="wedding">Wedding</option>
+            <option value="party">Party</option>
+            <option value="sports">Sports</option>
+            <option value="tech">Tech</option>
+            <option value="art">Art</option>
+          </select>
+          <button id="searchBtn" class="btn rounded-xl px-6 py-3 font-semibold">Search</button>
+        </div>
+
+        <p id="noResults" class="hidden py-8 text-center text-gray-400">No events found. Try another search.</p>
+
+        <div id="eventList" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <article class="event-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"
+            data-title="indie live concert" data-category="music">
+            <img class="h-48 w-full object-cover" src="./images/indie.jpg" alt="Indie concert">
+            <div class="p-5"><span class="purple text-sm">MUSIC</span>
+              <h3 class="mt-2 text-lg font-bold">Indie Live Concert</h3>
+              <p class="mt-2 text-sm text-gray-400"> Open Air Stage, Kochi</p>
+              <div class="mt-4 flex justify-between"><b>₹499</b><button class="details-btn purple"
+                  data-name="Indie Live Concert" data-price="499">View Details →</button></div>
+            </div>
+          </article>
+
+          <article class="event-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"
+            data-title="dream wedding expo" data-category="wedding">
+            <img class="h-48 w-full object-cover" src="./images/expo.jpg" alt="Wedding venue">
+            <div class="p-5"><span class="purple text-sm">WEDDING</span>
+              <h3 class="mt-2 text-lg font-bold">Dream Wedding Expo</h3>
+              <p class="mt-2 text-sm text-gray-400"> Grand Convention Centre</p>
+              <div class="mt-4 flex justify-between"><b>₹299</b><button class="details-btn purple"
+                  data-name="Dream Wedding Expo" data-price="299">View Details →</button></div>
+            </div>
+          </article>
+
+          <article class="event-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"
+            data-title="champions football night" data-category="sports">
+            <img class="h-48 w-full object-cover" src="./images/football.jpg" alt="Football stadium">
+            <div class="p-5"><span class="purple text-sm">SPORTS</span>
+              <h3 class="mt-2 text-lg font-bold">Champions Football Night</h3>
+              <p class="mt-2 text-sm text-gray-400"> City Stadium, Trivandrum</p>
+              <div class="mt-4 flex justify-between"><b>₹250</b><button class="details-btn purple"
+                  data-name="Champions Football Night" data-price="250">View Details →</button></div>
+            </div>
+          </article>
+
+          <article class="event-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"
+            data-title="art after dark" data-category="art">
+            <img class="h-48 w-full object-cover" src="./images/art.jpg" alt="Art exhibition">
+            <div class="p-5"><span class="purple text-sm">ART</span>
+              <h3 class="mt-2 text-lg font-bold">Art After Dark</h3>
+              <p class="mt-2 text-sm text-gray-400"> Art District, Kochi</p>
+              <div class="mt-4 flex justify-between"><b>₹199</b><button class="details-btn purple"
+                  data-name="Art After Dark" data-price="199">View Details →</button></div>
+            </div>
+          </article>
+
+          <article class="event-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"
+            data-title="future tech summit" data-category="tech">
+            <img class="h-48 w-full object-cover" src="./images/tech.jpg" alt="Tech event">
+            <div class="p-5"><span class="purple text-sm">TECH</span>
+              <h3 class="mt-2 text-lg font-bold">Future Tech Summit</h3>
+              <p class="mt-2 text-sm text-gray-400"> Tech Park, Kochi</p>
+              <div class="mt-4 flex justify-between"><b>₹399</b><button class="details-btn purple"
+                  data-name="Future Tech Summit" data-price="399">View Details →</button></div>
+            </div>
+          </article>
+
+          <article class="event-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"
+            data-title="neon rooftop party" data-category="party">
+            <img class="h-48 w-full object-cover" src="./images/neon roof.jpg" alt="Party crowd">
+            <div class="p-5"><span class="purple text-sm">PARTY</span>
+              <h3 class="mt-2 text-lg font-bold">Neon Rooftop Party</h3>
+              <p class="mt-2 text-sm text-gray-400"> Sky Lounge, Trivandrum</p>
+              <div class="mt-4 flex justify-between"><b>₹599</b><button class="details-btn purple"
+                  data-name="Neon Rooftop Party" data-price="599">View Details →</button></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Venues -->
+    <section id="venues" class="mx-auto max-w-7xl px-5 py-16">
+      <div class="reveal mb-8">
+        <p class="purple text-sm font-semibold uppercase tracking-widest">Great places, great moments</p>
+        <h2 class="mt-2 text-3xl font-bold sm:text-4xl">Popular Venues</h2>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        <article class="venue-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"><img
+            class="h-52 w-full object-cover" src="./images/ve1.jpg" alt="Elegant event hall">
+          <div class="p-5">
+            <h3 class="text-lg font-bold">Grand Convention Centre</h3>
+            <p class="mt-2 text-sm text-gray-400"> Kochi, Kerala</p>
+          </div>
+        </article>
+        <article class="venue-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"><img
+            class="h-52 w-full object-cover" src="./images/ve2.jpg" alt="Concert venue">
+          <div class="p-5">
+            <h3 class="text-lg font-bold">Greenfield Arena</h3>
+            <p class="mt-2 text-sm text-gray-400">Kochi, Kerala</p>
+          </div>
+        </article>
+        <article class="venue-card reveal overflow-hidden rounded-2xl border border-white/10 bg-[#171020]"><img
+            class="h-52 w-full object-cover" src="./images/ve3.jpg" alt="Event venue">
+          <div class="p-5">
+            <h3 class="text-lg font-bold">Skyline Event Space</h3>
+            <p class="mt-2 text-sm text-gray-400">Trivandrum, Kerala</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Featured Experiences -->
+    <section class="bg-gray px-6 py-16">
+      <h2 class="mb-10 text-center text-3xl font-bold text-white">Featured Experiences</h2>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="overflow-hidden rounded-xl bg-gray-500 shadow-lg">
+          <video class="h-64 w-full object-cover" src="./vdo/hero2.mp4" autoplay muted loop playsinline></video>
+          <div class="p-5">
+            <h3 class="text-xl font-semibold">Live Concerts</h3>
+            <p class="mt-2 text-white-600">Experience unforgettable live music.</p>
+          </div>
+        </div>
+
         
-<!-- Quick Links -->
-<div class="footer-links">
-    <h3>Quick Links</h3>
 
-    <div class="footer-nav">
-        <a href="index.html">Home</a>
-        <a href="eventexplore.html">Explore Events</a>
-        <a href="eventdetails.html">Event Details</a>
-        <a href="mybooking.html">My Booking</a>
-        <a href="admindashboard.html">Admin Dashboard</a>
-    </div>
-</div>
-
-
-        <!-- Contact -->
-        <div class="footer-contact">
-            <h3>Contact</h3>
-            <p>contact@eventra.com</p>
-
-            <div class="footer-social">
-                <a href="https://instagram.com"
-                   target="_blank" rel="noopener noreferrer">
-                    Instagram
-                </a>
-
-                <a href="https://facebook.com"
-                   target="_blank" rel="noopener noreferrer">
-                    Facebook
-                </a>
-
-                <a href="https://youtube.com"
-                   target="_blank" rel="noopener noreferrer">
-                    YouTube
-                </a>
-            </div>
+        <div class="overflow-hidden rounded-xl bg-gray-500 shadow-lg">
+          <video class="h-64 w-full object-cover" src="./vdo/party.mp4" autoplay muted loop playsinline></video>
+          <div class="p-5">
+            <h3 class="text-xl font-semibold">Weddings</h3>
+            <p class="mt-2 text-white-600">Celebrate beautiful moments together.</p>
+          </div>
         </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- Photo Gallery -->
+    <section id="gallery" class="bg-[#100b19] px-5 py-16">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mb-8">
+          <p class="purple text-sm font-semibold uppercase tracking-widest">Moments worth keeping</p>
+          <h2 class="mt-2 text-3xl font-bold sm:text-4xl">Photo Gallery</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-3 md:grid-cols-4">
+          <img class="gallery-img reveal h-44 w-full rounded-xl object-cover md:h-56" src="./images/green.jpg"
+            alt="Concert lights">
+          <img class="gallery-img reveal h-44 w-full rounded-xl object-cover md:h-56" src="./images/gold.jpg"
+            alt="Party crowd">
+          <img class="gallery-img reveal h-44 w-full rounded-xl object-cover md:h-56" src="./images/g2.jpg"
+            alt="Wedding celebration">
+          <img class="gallery-img reveal h-44 w-full rounded-xl object-cover md:h-56" src="./images/g3.jpg"
+            alt="Conference event">
+        </div>
+      </div>
+    </section>
 
-    <!-- Copyright -->
-    <div class="footer-bottom">
-        <p>&copy; 2026 Eventra. All rights reserved.</p>
+    <!-- Customer Reviews -->
+    <section class="mx-auto max-w-7xl px-5 py-16">
+      <div class="reveal mb-8">
+        <p class="purple text-sm font-semibold uppercase tracking-widest">Guest stories</p>
+        <h2 class="mt-2 text-3xl font-bold sm:text-4xl">What People Say</h2>
+      </div>
+      <div class="grid gap-5 md:grid-cols-3">
+        <article class="review-card reveal rounded-2xl border border-white/10 bg-[#171020] p-6">
+          <p class="purple">★★★★★</p>
+          <p class="mt-3 text-gray-300">“Finding live music events was so easy. The whole experience felt smooth!”</p><b
+            class="mt-5 block">Ananya R.</b><small class="text-gray-500">Music fan</small>
+        </article>
+        <article class="review-card reveal rounded-2xl border border-white/10 bg-[#171020] p-6">
+          <p class="purple">★★★★★</p>
+          <p class="mt-3 text-gray-300">“The event details were clear and the site looks amazing on my phone.”</p><b
+            class="mt-5 block">Rahul K.</b><small class="text-gray-500">Event guest</small>
+        </article>
+        <article class="review-card reveal rounded-2xl border border-white/10 bg-[#171020] p-6">
+          <p class="purple">★★★★★</p>
+          <p class="mt-3 text-gray-300">“I discovered a great workshop I would never have heard about otherwise.”</p><b
+            class="mt-5 block">Meera S.</b><small class="text-gray-500">Workshop guest</small>
+        </article>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section id="newsletter" class="px-5 pb-16">
+      <div
+        class="reveal mx-auto max-w-5xl rounded-3xl border border-purple-400/25 bg-gradient-to-r from-[#24103b] to-[#171020] px-6 py-12 text-center sm:px-12">
+        <p class="purple text-sm font-semibold uppercase tracking-widest">Stay in the loop</p>
+        <h2 class="mt-2 text-3xl font-bold sm:text-4xl">Never miss an event.</h2>
+        <p class="mx-auto mt-3 max-w-xl text-gray-300">Get the latest events and special offers delivered to your inbox.
+        </p>
+        <form id="newsletterForm" class="mx-auto mt-6 flex max-w-xl flex-col gap-3 sm:flex-row">
+          <input id="emailInput" type="email" required placeholder="Enter your email address"
+            class="min-w-0 flex-1 rounded-full border border-white/15 bg-black/30 px-5 py-3 outline-none focus:border-purple-400">
+          <button class="btn rounded-full px-7 py-3 font-semibold" type="submit">Subscribe</button>
+        </form>
+        <p id="newsletterMessage" class="mt-3 text-sm text-purple-200"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 bg-[#07060b] px-5 py-10">
+    <div class="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row">
+      <div><a href="#home" class="text-2xl font-extrabold">Eventra</a>
+        <p class="mt-3 max-w-sm text-sm text-gray-400">Discover your next favourite experience with Eventra.</p>
+      </div>
+      <div><b>Quick Links</b>
+        <div class="mt-3 flex flex-wrap gap-4 text-sm text-gray-400"><a href="#home">Home</a><a
+            href="#explore">Explore</a><a href="#venues">Venues</a><a href="#gallery">Gallery</a></div>
+      </div>
+      <div><b>Contact</b>
+        <p class="mt-3 text-sm text-gray-400">@eventra.com</p>
+        <div class="mt-3 flex gap-4 text-sm"><a class="purple" href="https://instagram.com" target="_blank"
+            rel="noreferrer">Instagram</a><a class="purple" href="https://facebook.com" target="_blank"
+            rel="noreferrer">Facebook</a><a class="purple" href="https://youtube.com" target="_blank"
+            rel="noreferrer">YouTube</a></div>
+      </div>
     </div>
-</footer>
-    <!--Javascript-->
-    <script src="./eventexplore.js"></script>
+    <p class="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-5 text-center text-xs text-gray-500">© 2026 Eventra</p>
+  </footer>
+
+  <!-- Gallery Image Modal -->
+  <div id="imageModal" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/90 p-5">
+    <button id="closeModal" class="absolute right-6 top-5 text-4xl" aria-label="Close image">×</button>
+    <img id="modalImage" class="max-h-[85vh] max-w-full rounded-xl object-contain" alt="Gallery preview">
+  </div>
+
+  <!-- Event Details Modal -->
+  <div id="detailsModal" class="fixed inset-0 z-[55] hidden items-center justify-center bg-black/80 p-5">
+    <div class="glass w-full max-w-md rounded-2xl p-6">
+      <div class="flex items-center justify-between">
+        <h3 id="detailsTitle" class="text-xl font-bold">Event Details</h3>
+        <button id="closeDetails" class="text-2xl">×</button>
+      </div>
+      <p class="mt-3 text-gray-300">Ticket price: <b id="detailsPrice" class="purple"></b></p>
+      <label class="mt-5 block text-sm text-gray-300">Tickets</label>
+      <input id="ticketQty" type="number" min="1" max="10" value="1"
+        class="mt-2 w-full rounded-xl border border-white/10 bg-black/30 px-4 py-3">
+      <p class="mt-4">Total: <b id="totalPrice" class="purple">₹0</b></p>
+      <button id="bookBtn" class="btn mt-5 w-full rounded-xl px-5 py-3 font-semibold">Confirm Demo Booking</button>
+      <p id="bookingMessage" class="mt-3 text-sm text-purple-200"></p>
+    </div>
+  </div>
+
+  <!-- JavaScript File -->
+  <script src="script.js" defer></script>
 </body>
+
 </html>

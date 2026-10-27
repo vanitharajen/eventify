@@ -48,9 +48,7 @@ categoryButtons.forEach(function (button) {
         const selectedCategory = button.innerText.trim().toLowerCase();
 
         eventItems.forEach(function (item) {
-            const eventCategory = item
-                .querySelector(".event-category")
-                .innerText.trim().toLowerCase();
+            const eventCategory = item.querySelector(".event-category").innerText.trim().toLowerCase();
 
             if (
                 selectedCategory === "all events" ||
